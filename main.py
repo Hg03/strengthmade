@@ -52,7 +52,7 @@ if st.button("Generate Your Savage Workout"):
     st.info("Your Kettlebell Workout:")
     start=1
     for exercise, demo in zip(workout, demos):
-        with st.expander(f"Exercise {i}: {exercise}"):
+        with st.expander(f"Exercise {start}: {exercise}"):
             st.write("3x sets with 8-10x reps")
             st.write("Demo to learn")
             st_player(demo)
