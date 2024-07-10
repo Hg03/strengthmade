@@ -29,13 +29,13 @@ full_body_exercises = {
 def generate_workout(upper_count, lower_count, full_count):
     workout = []
     demos = []
-    workout.extend(random.sample(list(upper_body_exercises.keys()), upper_count))
-    # demos.extend(upper_body_exercises[workout[-1]])
-    workout.extend(random.sample(list(lower_body_exercises.keys()), lower_count))
-    st.write(lower_body_exercises[workout[-1]])
-    demos.extend(lower_body_exercises[workout[-1]])
-    workout.extend(random.sample(list(full_body_exercises.keys()), full_count))
-    demos.extend(full_body_exercises[workout[-1]])
+    workout.append(random.sample(list(upper_body_exercises.keys()), upper_count))
+    demos.append(upper_body_exercises[workout[-1]])
+    workout.append(random.sample(list(lower_body_exercises.keys()), lower_count))
+    # st.write(lower_body_exercises[workout[-1]])
+    demos.append(lower_body_exercises[workout[-1]])
+    workout.append(random.sample(list(full_body_exercises.keys()), full_count))
+    demos.append(full_body_exercises[workout[-1]])
 
     return workout, demos
 
