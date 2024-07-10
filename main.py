@@ -36,7 +36,7 @@ def generate_workout(upper_count, lower_count, full_count):
 
 # Streamlit app layout
 st.title("Kettlebell Workout Generator")
-
+st.image('kb.jpg', caption='You Are Savage💪')
 
 st.sidebar.header("Workout Configuration")
 upper_count = st.sidebar.slider("Number of Upper Body Exercises", 1, len(upper_body_exercises), 1)
