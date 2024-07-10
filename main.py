@@ -54,8 +54,7 @@ if st.button("Generate Your Savage Workout"):
     for exercise, demo in zip(workout, demos):
         with st.expander(f"Exercise {start}: {exercise}"):
             st.write("3x sets with 8-10x reps")
-            st.write("Demo to learn")
-            st_player(demo)
+            st.link_button("Demo to learn", demo)
             start += 1
             
 
