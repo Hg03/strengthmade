@@ -3,6 +3,35 @@ import streamlit as st
 from streamlit_player import st_player
 
 # Define the exercise lists
+
+"""
+shoulder -
+    - kettlebell zercher and press
+    - kettlebell clean and press
+    - kettlebell z press
+    - pike push ups
+
+chest -
+    - kettlebell Floor press (single arms)
+    - kettlebell Floor press (both arms)
+    - push ups
+
+back -
+    - pull ups
+    - kettlebell rows
+    - kettlebell snatch
+
+legs - 
+    - double kettlebell (one clean and one hanged) lunges
+    - kang squat
+    - kettlebell curtsy squat
+
+Full body - 
+    - kettlebell Overhead squat
+    - thrusters
+    - kettlebell swing
+    - burpees
+"""
 upper_body_exercises = {
     "Kettlebell Snatch": "https://youtu.be/6l2Iu26oWW8?si=N_Tgsker1xrITWrg",
     "Kettlebell Zercher and Press": "https://youtube.com/shorts/rEmwZw2blqs?si=0_0Z1AcocynfUIDp",
