@@ -43,7 +43,7 @@ upper_count = st.sidebar.slider("Number of Upper Body Exercises", 1, len(upper_b
 lower_count = st.sidebar.slider("Number of Lower Body Exercises", 1, len(lower_body_exercises), 1)
 full_count = st.sidebar.slider("Number of Full Body Exercises", 1, len(full_body_exercises), 1)
 
-if st.sidebar.button("Generate Workout"):
+if st.button("Generate Your Savage Workout"):
     workout = generate_workout(upper_count, lower_count, full_count)
     st.subheader("Your Kettlebell Workout:")
     for i, exercise in enumerate(workout, start=1):
