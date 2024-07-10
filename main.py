@@ -29,22 +29,22 @@ full_body_exercises = {
 def generate_workout(upper_count, lower_count, full_count):
     workout = []
     demos = []
-    exercise1 = random.sample(list(upper_body_exercises.keys()), upper_count)
-    workout.append(exercise1)
-    demos.append(upper_body_exercises[exercise1])
-    exercise2 = random.sample(list(lower_body_exercises.keys()), upper_count)
-    workout.append(exercise2)
-    demos.append(upper_body_exercises[exercise2])
-    exercise3 = random.sample(list(full_body_exercises.keys()), upper_count)
-    workout.append(exercise3)
-    demos.append(upper_body_exercises[exercise3])
-    # workout.append(random.sample(list(upper_body_exercises.keys()), upper_count))
-    # demos.append(upper_body_exercises[workout[-1]])
-    # workout.append(random.sample(list(lower_body_exercises.keys()), lower_count))
-    # st.write(lower_body_exercises[workout[-1]])
-    # demos.append(lower_body_exercises[workout[-1]])
-    # workout.append(random.sample(list(full_body_exercises.keys()), full_count))
-    # demos.append(full_body_exercises[workout[-1]])
+
+    upper_exercises = random.sample(list(upper_body_exercises.keys()), upper_count)
+    lower_exercises = random.sample(list(lower_body_exercises.keys()), lower_count)
+    full_exercises = random.sample(list(full_body_exercises.keys()), full_count)
+
+    for exercise in upper_exercises:
+        workout.append(exercise)
+        demos.append(upper_body_exercises[exercise])
+    
+    for exercise in lower_exercises:
+        workout.append(exercise)
+        demos.append(lower_body_exercises[exercise])
+
+    for exercise in full_exercises:
+        workout.append(exercise)
+        demos.append(full_body_exercises[exercise])
 
     return workout, demos
 
@@ -60,12 +60,7 @@ full_count = st.sidebar.slider("Number of Full Body Exercises", 1, len(full_body
 if st.button("Generate Your Savage Workout"):
     workout, demos = generate_workout(upper_count, lower_count, full_count)
     st.info("Your Kettlebell Workout:")
-    start=1
-    for exercise, demo in zip(workout, demos):
-        with st.expander(f"Exercise {start}: {exercise}"):
+    for i, (exercise, demo) in enumerate(zip(workout, demos), start=1):
+        with st.expander(f"Exercise {i}: {exercise}"):
             st.write("3x sets with 8-10x reps")
-            st.write(demo)
-            st.link_button("Demo to learn", demo)
-            start += 1
-            
-
+            st_player(demo)
