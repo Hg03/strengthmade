@@ -30,7 +30,7 @@ def generate_workout(upper_count, lower_count, full_count):
     workout = []
     demos = []
     workout.extend(random.sample(list(upper_body_exercises.keys()), upper_count))
-    st.write(workout)
+    st.write(workout[-1])
     demos.extend(upper_body_exercises[workout[-1]])
     workout.extend(random.sample(list(lower_body_exercises.keys()), lower_count))
     demos.extend(lower_body_exercises[workout[-1]])
