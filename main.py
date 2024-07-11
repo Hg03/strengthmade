@@ -9,30 +9,35 @@ shoulder -
     - kettlebell clean and press
     - kettlebell z press
     - pike push ups
+    - kettlebell chops
 
 chest -
     - kettlebell Floor press (lower)
     - kettlebell crush grip press (both arms)
-    - push ups
+    - push ups (classic + diamond)
     - kettlebell 90 degree floor press (upper) 
+    
 
 back -
     - pull ups
     - kettlebell rows
     - kettlebell snatch
     - kettlebell snatchy lunges
+    - kettlebell pullover
 
 legs - 
     - double kettlebell (one clean and one hanged) lunges
     - kang squat
     - kettlebell curtsy squat
     - Romanian deadlift
+    - zercher squat
 
 Full body - 
     - kettlebell Overhead squat
     - thrusters
     - kettlebell swing
     - burpees
+    - carry with lunges
 """
 upper_body_exercises = {
     "Kettlebell Snatch": "https://youtu.be/6l2Iu26oWW8?si=N_Tgsker1xrITWrg",
