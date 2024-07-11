@@ -1,6 +1,5 @@
 import random
 import streamlit as st
-from streamlit_player import st_player
 
 # Define the exercise lists
 
@@ -12,19 +11,22 @@ shoulder -
     - pike push ups
 
 chest -
-    - kettlebell Floor press (single arms)
-    - kettlebell Floor press (both arms)
+    - kettlebell Floor press (lower)
+    - kettlebell crush grip press (both arms)
     - push ups
+    - kettlebell 90 degree floor press (upper) 
 
 back -
     - pull ups
     - kettlebell rows
     - kettlebell snatch
+    - kettlebell snatchy lunges
 
 legs - 
     - double kettlebell (one clean and one hanged) lunges
     - kang squat
     - kettlebell curtsy squat
+    - Romanian deadlift
 
 Full body - 
     - kettlebell Overhead squat
