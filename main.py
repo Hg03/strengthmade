@@ -3,100 +3,59 @@ import streamlit as st
 
 # Define the exercise lists
 
-"""
-shoulder -
-    - kettlebell zercher and press
-    - kettlebell clean and press
-    - kettlebell z press
-    - pike push ups
-    - kettlebell chops
+shoulder = {
+    "kettlebell zercher and press": "https://youtube.com/shorts/rEmwZw2blqs?si=0_0Z1AcocynfUIDp",
+    "kettlebell clean and press": "https://youtu.be/ExLymPrIhBQ?si=Jo7Lf2WUViZiEmhs",
+    "kettlebell z press": "https://youtube.com/shorts/wto_8mVOHF8?si=M4jawG9Y9vyQgw7T",
+    "pike push ups": "https://youtube.com/shorts/0cT6ug3WVn4?si=Sn-ey_fbTvF9V7-R",
+    "kettlebell chops": "https://youtu.be/Psmkt_Tft5E?si=9gj8FZ-jFr9Vm_vs"
+}
+chest = {
+    "kettlebell Floor press (lower)": "https://youtube.com/shorts/NHDQoqK8sXE?si=DfarH_cequPkzEAy", 
+    "kettlebell crush grip press (both arms)": "https://youtu.be/A98BUB7jxU0?si=i4qAzDfWlrH7ktnQ", 
+    "push ups (classic + diamond)": "https://youtu.be/XtU2VQVuLYs?si=hMQ9D8rmVR0h7bGI", 
+    "kettlebell 90 degree floor press (upper)": "https://youtube.com/shorts/NHDQoqK8sXE?si=-Z40JVp1TFzgVVAH"
+} 
 
-chest -
-    - kettlebell Floor press (lower)
-    - kettlebell crush grip press (both arms)
-    - push ups (classic + diamond)
-    - kettlebell 90 degree floor press (upper) 
-    
-
-back -
-    - pull ups
-    - kettlebell rows
-    - kettlebell snatch
-    - kettlebell snatchy lunges
-    - kettlebell pullover
-
-legs - 
-    - double kettlebell (one clean and one hanged) lunges
-    - kang squat
-    - kettlebell curtsy squat
-    - Romanian deadlift
-    - zercher squat
-
-Full body - 
-    - kettlebell Overhead squat
-    - thrusters
-    - kettlebell swing
-    - burpees
-    - carry with lunges
-"""
-upper_body_exercises = {
-    "Kettlebell Snatch": "https://youtu.be/6l2Iu26oWW8?si=N_Tgsker1xrITWrg",
-    "Kettlebell Zercher and Press": "https://youtube.com/shorts/rEmwZw2blqs?si=0_0Z1AcocynfUIDp",
-    "Kettlebell Swing": "https://youtu.be/ae6nV6pFRG4?si=fpSZaDpJ8KpGaemZ",
-    "Kettlebell Halo": "https://youtu.be/Zy6bgAxPeks?si=1E8lv137u0f-CMrr",
-    "Kettlebell Bent-Over Row": "https://youtu.be/9Q9gwoXHn1o?si=VUXCZcoBgc9VuxRP",
+back = {
+    "pull ups": "https://youtube.com/shorts/gy1dyxEdCqc?si=zOhnMfPxsTinwdka", 
+    "kettlebell rows": "https://youtube.com/shorts/xbtdGjYmrnM?si=8DnseOJ5Y3Cw8jm4", 
+    "kettlebell snatch": "https://youtube.com/shorts/GV8kKDSprfQ?si=MthB8OqKVg699Yht", 
+    "kettlebell snatchy lunges": "https://youtu.be/gqf0njGSiRI?si=xSyGmuRxQGnjZmW7", 
+    "kettlebell pullover": "https://youtube.com/shorts/5dfA3OP4wx0?si=9byWzT8Qni-F-Sif"
+}
+legs = {
+    "double kettlebell (one clean and one hanged) lunges": "https://youtube.com/shorts/V490qKi_Z8A?si=oKpxqarcD9vrfN-P", 
+    "kang squat": "https://youtube.com/shorts/yF0zupwzg8E?si=qySTT1Ymfh7Mqyvi", 
+    "kettlebell curtsy squat": "https://youtube.com/shorts/DpsNSe3VPYI?si=5iIznJ1_M3vZG7Bw", 
+    "Romanian deadlift": "https://youtu.be/keiZFdUgvKQ?si=LyshBeXbCS9MoVSn", 
+    "zercher squat": "https://youtube.com/shorts/xOwTaQdN2YY?si=1waZFb1k6SoF38Uy"
+}
+Full = {
+    "kettlebell Overhead squat": "https://youtu.be/tpPKyhvf0IA?si=goat5wiTpUmq1TLE", 
+    "thrusters": "https://youtube.com/shorts/Id0Qefh4AHc?si=xj6yu7Ud1xUsVlYj", 
+    "kettlebell swing": "https://youtu.be/ae6nV6pFRG4?si=fpSZaDpJ8KpGaemZ", 
+    "burpees": "https://youtu.be/G2hv_NYhM-A?si=PRLHbiTdIdpgWuc5", 
+    "carry with lunges": "https://youtube.com/shorts/xQA8fZn1hzk?si=IjI6KWXad3KSdt3R"
 }
 
-lower_body_exercises = {
-    "Kettlebell Goblet Squat": "https://youtu.be/7EGVKUH0K10?si=aN1EUEJj2nSG54oQ",
-    "Kettlebell Romanian Deadlift": "https://youtu.be/keiZFdUgvKQ?si=ZTbZO5AT7ZPdmnby",
-    "Kettlebell Lunge": "https://youtube.com/shorts/CEeb-FqLmwk?si=ZyabS3ky6-q8-01U",
-    "Kettlebell Kickstand Squat": "https://youtube.com/shorts/QvXbpnGayzw?si=m3XQyrtU08R-5-jv",
-    "Kettlebell Deadlift": "https://youtu.be/G8wX8wwDJsM?si=fx8JAFEnTBmUl_WM",
-}
-
-full_body_exercises = {
-    "Kettlebell Thrusters": "https://youtube.com/shorts/Id0Qefh4AHc?si=xj6yu7Ud1xUsVlYj", 
-    "Kettlebell Overhead Lunges": "https://youtu.be/EDK2KTVPHU0?si=tz_IY0r4LZpwkVji",
-    "Kettlebell Clean Squat": "https://youtu.be/yXTH9_7imAQ?si=IYTtM2StXMav2ikm"
-}
 
 # Function to generate a workout
-def generate_workout(upper_count, lower_count, full_count):
+def generate_workout(split):
     workout = []
     demos = []
-
-    upper_exercises = random.sample(list(upper_body_exercises.keys()), upper_count)
-    lower_exercises = random.sample(list(lower_body_exercises.keys()), lower_count)
-    full_exercises = random.sample(list(full_body_exercises.keys()), full_count)
-
-    for exercise in upper_exercises:
-        workout.append(exercise)
-        demos.append(upper_body_exercises[exercise])
-    
-    for exercise in lower_exercises:
-        workout.append(exercise)
-        demos.append(lower_body_exercises[exercise])
-
-    for exercise in full_exercises:
-        workout.append(exercise)
-        demos.append(full_body_exercises[exercise])
-
-    return workout, demos
+    # if split = 'Push':
+    return split
+        
 
 # Streamlit app layout
 st.title("Kettlebell Workout Generator")
 st.image('kb.jpg', caption='You Are Savage💪')
-
-st.sidebar.header("Workout Configuration")
-upper_count = st.sidebar.slider("Number of Upper Body Exercises", 1, len(upper_body_exercises), 1)
-lower_count = st.sidebar.slider("Number of Lower Body Exercises", 1, len(lower_body_exercises), 1)
-full_count = st.sidebar.slider("Number of Full Body Exercises", 1, len(full_body_exercises), 1)
-
+split = st.multiselect("What do you wanna perform ?", ["Push", "Pull", "Legs", "Full Body"], horizontal=True)
 if st.button("Generate Your Savage Workout"):
-    workout, demos = generate_workout(upper_count, lower_count, full_count)
-    st.info("Your Kettlebell Workout:")
-    for i, (exercise, demo) in enumerate(zip(workout, demos), start=1):
-        with st.expander(f"Exercise {i}: {exercise}"):
-            st.write("3x sets with 8-10x reps")
-            st.link_button("How you can do it", demo)
+    print(generate_workout(split))
+    # st.info("Your Kettlebell Workout:")
+    # for i, (exercise, demo) in enumerate(zip(workout, demos), start=1):
+    #     with st.expander(f"Exercise {i}: {exercise}"):
+    #         st.write("3x sets with 8-10x reps")
+    #         st.link_button("How you can do it", demo)
