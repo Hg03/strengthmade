@@ -61,7 +61,7 @@ st.title("Kettlebell Workout Generator")
 st.image('kb.jpg', caption='You Are Savage💪')
 splits = st.multiselect("What do you wanna perform ?", ["Chest", "Shoulder", "Back", "Legs", "Full Body"])
 if st.button("Generate Your Savage Workout"):
-    st.write(generate_workout(splits)
+    st.write(generate_workout(splits))
     # st.info("Your Kettlebell Workout:")
     # for i, (exercise, demo) in enumerate(zip(workout, demos), start=1):
     #     with st.expander(f"Exercise {i}: {exercise}"):
