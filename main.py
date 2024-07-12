@@ -51,7 +51,7 @@ def get_two_random_strings(string_list):
 def generate_workout(splits):
     workout = []
     demos = []
-    workout_names = [get_two_random_string(list(exercises[split].keys())) for split in splits]
+    workout_names = [get_two_random_strings(list(exercises[split].keys())) for split in splits]
     return workout_names
 
 
