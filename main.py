@@ -47,7 +47,7 @@ def fetch_with_links(workout_list):
         final_list[workout] = ""
         st.write(workout)
         for exercises_ in exercises.keys():
-            st.write(exercises_)
+            st.write(f"exercises_ -> {exercises_}")
             break
         break
     return final_list
