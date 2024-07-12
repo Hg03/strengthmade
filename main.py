@@ -1,5 +1,6 @@
 import random
 import streamlit as st
+import pandas as pd
 
 # Define the exercise lists
 
@@ -24,6 +25,12 @@ back = {
     "kettlebell snatchy lunges": "https://youtu.be/gqf0njGSiRI?si=xSyGmuRxQGnjZmW7", 
     "kettlebell pullover": "https://youtube.com/shorts/5dfA3OP4wx0?si=9byWzT8Qni-F-Sif"
 }
+
+abs = {
+    "Kettlebell l crunch": "https://www.youtube.com/watch?v=__T3XxQB2Ng&t=302s",
+    "Kettlebell turkish sit up": "https://www.youtube.com/watch?v=__T3XxQB2Ng&t=228s",
+    "kettlebell pike lift over": "https://www.youtube.com/watch?v=__T3XxQB2Ng&t=290s"
+}
 legs = {
     "double kettlebell (one clean and one hanged) lunges": "https://youtube.com/shorts/V490qKi_Z8A?si=oKpxqarcD9vrfN-P", 
     "kang squat": "https://youtube.com/shorts/yF0zupwzg8E?si=qySTT1Ymfh7Mqyvi", 
@@ -39,7 +46,7 @@ full = {
     "carry with lunges": "https://youtube.com/shorts/xQA8fZn1hzk?si=IjI6KWXad3KSdt3R"
 }
 
-exercises = {"Chest":chest, "Shoulder":shoulder, "Back":back, "Legs":legs, "Full Body":full}
+exercises = {"Chest":chest, "Shoulder":shoulder, "Back":back, "Abs":abs, "Legs":legs, "Full Body":full}
 
 def fetch_with_links(workout_list):
     final_list = {}
@@ -68,11 +75,13 @@ def generate_workout(splits):
     return final_list
 
 
-
+df = pd.DataFrame({"Day":["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], "Split": ["Chest & Shoulders", "Back & Abs", "Legs", "Chest & Shoulders", "Back & Abs", "Legs", "Full Body"]})
 # Streamlit app layout
 st.title("Kettlebell Workout Generator")
+st.write("My current split")
+st.sidebar.dataframe(df)
 st.image('kb.jpg', caption='You Are Savage💪')
-splits = st.multiselect("What do you wanna perform ?", ["Chest", "Shoulder", "Back", "Legs", "Full Body"])
+splits = st.multiselect("What do you wanna perform ?", ["Chest", "Shoulder", "Back", "Abs", "Legs", "Full Body"])
 if st.button("Generate Your Savage Workout"):
     workouts = generate_workout(splits)
     st.info("Your Kettlebell Workout:")
