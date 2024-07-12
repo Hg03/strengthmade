@@ -77,6 +77,6 @@ if st.button("Generate Your Savage Workout"):
     workouts = generate_workout(splits)
     st.info("Your Kettlebell Workout:")
     for workout in workouts.items():
-        with st.expander(f"workout[0]"):
+        with st.expander(f"{workout[0]}"):
             st.write("3 sets 8-10 reps")
             st.link_button("Learn how to do it", workout[1])
