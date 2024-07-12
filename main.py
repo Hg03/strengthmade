@@ -51,7 +51,7 @@ def generate_workout(split):
 # Streamlit app layout
 st.title("Kettlebell Workout Generator")
 st.image('kb.jpg', caption='You Are Savage💪')
-split = st.multiselect("What do you wanna perform ?", ["Push", "Pull", "Legs", "Full Body"])
+split = st.multiselect("What do you wanna perform ?", ["Chest", "Shoulder", "Back", "Legs", "Full Body"])
 if st.button("Generate Your Savage Workout"):
     print(generate_workout(split))
     # st.info("Your Kettlebell Workout:")
