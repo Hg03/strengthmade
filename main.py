@@ -78,7 +78,7 @@ def generate_workout(splits):
 df = pd.DataFrame({"Day":["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], "Split": ["Chest & Shoulders", "Back & Abs", "Legs", "Chest & Shoulders", "Back & Abs", "Legs", "Full Body"]})
 # Streamlit app layout
 st.title("Kettlebell Workout Generator")
-st.write("My current split")
+st.sidebar.title("My current split")
 st.sidebar.dataframe(df)
 st.image('kb.jpg', caption='You Are Savage💪')
 splits = st.multiselect("What do you wanna perform ?", ["Chest", "Shoulder", "Back", "Abs", "Legs", "Full Body"])
