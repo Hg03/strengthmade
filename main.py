@@ -45,10 +45,11 @@ def fetch_with_links(workout_list):
     final_list = {}
     for workout in workout_list:
         final_list[workout] = ""
+        print(workout)
         for exercises_ in exercises.values():
-            for exercise in exercises_.keys():
-                if exercise == workout:
-                    final_list[workout] = exercises[exercises_][exercise]
+            print(exercises_)
+            break
+        break
     return final_list
     
 # Function to pick exercise
