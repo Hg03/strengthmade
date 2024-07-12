@@ -31,7 +31,7 @@ legs = {
     "Romanian deadlift": "https://youtu.be/keiZFdUgvKQ?si=LyshBeXbCS9MoVSn", 
     "zercher squat": "https://youtube.com/shorts/xOwTaQdN2YY?si=1waZFb1k6SoF38Uy"
 }
-Full = {
+full = {
     "kettlebell Overhead squat": "https://youtu.be/tpPKyhvf0IA?si=goat5wiTpUmq1TLE", 
     "thrusters": "https://youtube.com/shorts/Id0Qefh4AHc?si=xj6yu7Ud1xUsVlYj", 
     "kettlebell swing": "https://youtu.be/ae6nV6pFRG4?si=fpSZaDpJ8KpGaemZ", 
@@ -39,21 +39,29 @@ Full = {
     "carry with lunges": "https://youtube.com/shorts/xQA8fZn1hzk?si=IjI6KWXad3KSdt3R"
 }
 
+exercises = {"Chest":chest, "Shoulder":shoulder, "Back":back, "Legs":legs, "Full Body":full}
+
+# Function to pick exercise
+def get_two_random_strings(string_list):
+    if len(string_list) < 2:
+        raise ValueError("List must contain at least two strings")
+    return random.sample(string_list, 2)
 
 # Function to generate a workout
-def generate_workout(split):
+def generate_workout(splits):
     workout = []
     demos = []
-    # if split = 'Push':
-    return split
-        
+    workout_names = [get_two_random_string(list(exercises[split].keys())) for split in splits]
+    return workout_names
+
+
 
 # Streamlit app layout
 st.title("Kettlebell Workout Generator")
 st.image('kb.jpg', caption='You Are Savage💪')
-split = st.multiselect("What do you wanna perform ?", ["Chest", "Shoulder", "Back", "Legs", "Full Body"])
+splits = st.multiselect("What do you wanna perform ?", ["Chest", "Shoulder", "Back", "Legs", "Full Body"])
 if st.button("Generate Your Savage Workout"):
-    st.write(generate_workout(split)[0])
+    st.write(generate_workout(splits)
     # st.info("Your Kettlebell Workout:")
     # for i, (exercise, demo) in enumerate(zip(workout, demos), start=1):
     #     with st.expander(f"Exercise {i}: {exercise}"):
