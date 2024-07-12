@@ -41,6 +41,16 @@ full = {
 
 exercises = {"Chest":chest, "Shoulder":shoulder, "Back":back, "Legs":legs, "Full Body":full}
 
+def fetch_with_links(workout_list):
+    final_list = {}
+    for workout in workout_list:
+        final_list[workout] = ""
+        for exercises_ in exercises.values():
+            for exercise in exercises_.keys()
+                if exercise == workout:
+                    final_list[workout] = exercises[exercises_][exercise]
+    return final_list
+    
 # Function to pick exercise
 def get_two_random_strings(string_list):
     if len(string_list) < 2:
@@ -54,7 +64,8 @@ def generate_workout(splits):
     workout_2d = [get_two_random_strings(list(exercises[split].keys())) for split in splits]
     flatten = lambda target: sum((flatten(sub) if isinstance(sub, list) else [sub] for sub in target), [])
     workout_names = flatten(workout_2d)
-    return workout_names
+    final_list = fetch_with_links(workout_names)
+    return final_list
 
 
 
