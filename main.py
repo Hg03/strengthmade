@@ -52,7 +52,7 @@ def generate_workout(splits):
     workout = []
     demos = []
     workout_2d = [get_two_random_strings(list(exercises[split].keys())) for split in splits]
-    flatten = lambda target: sum((flatten(sub) if isinstance(sub, list) else [sub] for sub in target, [])
+    flatten = lambda target: sum((flatten(sub) if isinstance(sub, list) else [sub] for sub in target), [])
     workout_names = flatten(workout_2d)
     return workout_names
 
