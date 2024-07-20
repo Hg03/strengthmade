@@ -22,7 +22,7 @@ back = {
     "pull ups": "https://youtube.com/shorts/gy1dyxEdCqc?si=zOhnMfPxsTinwdka", 
     "kettlebell rows": "https://youtube.com/shorts/xbtdGjYmrnM?si=8DnseOJ5Y3Cw8jm4", 
     "kettlebell snatch": "https://youtube.com/shorts/GV8kKDSprfQ?si=MthB8OqKVg699Yht", 
-    "kettlebell snatchy lunges": "https://youtu.be/gqf0njGSiRI?si=xSyGmuRxQGnjZmW7", 
+    "kettlebell rotational snatch": "https://youtu.be/KpDxyxOCjCE?si=zGwRiX-xD-ZoTWp-", 
     "kettlebell pullover": "https://youtube.com/shorts/5dfA3OP4wx0?si=9byWzT8Qni-F-Sif"
 }
 
