@@ -60,9 +60,14 @@ def fetch_with_links(workout_list):
     
 # Function to pick exercise
 def get_two_random_strings(string_list):
-    if len(string_list) < 2:
-        raise ValueError("List must contain at least two strings")
-    return random.sample(string_list, 2)
+    number_ex = '0'
+    if len(string_list) < 1:
+        st.primary("Include atleast one muscle group")
+    elif len(string_list) == 1:
+        number_ex += '4'
+    elif len(string_list) == 2:
+        number_ex += '2'
+    return random.sample(string_list, int(numver_ex))
 
 # Function to generate a workout
 def generate_workout(splits):
