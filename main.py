@@ -67,7 +67,7 @@ def get_two_random_strings(string_list):
         number_ex = '4'
     elif len(string_list) == 2:
         number_ex = '2'
-    return random.sample(string_list, int(numver_ex))
+    return random.sample(string_list, int(number_ex))
 
 # Function to generate a workout
 def generate_workout(splits):
