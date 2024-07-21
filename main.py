@@ -64,9 +64,9 @@ def get_two_random_strings(string_list):
     if len(string_list) < 1:
         st.primary("Include atleast one muscle group")
     elif len(string_list) == 1:
-        number_ex += '4'
+        number_ex = '4'
     elif len(string_list) == 2:
-        number_ex += '2'
+        number_ex = '2'
     return random.sample(string_list, int(numver_ex))
 
 # Function to generate a workout
