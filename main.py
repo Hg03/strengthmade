@@ -1,23 +1,52 @@
 import streamlit as st
 import random
 
-# Define the exercise categories and their corresponding exercises
+# Define the exercise categories and their corresponding exercises with details
 upper_push = {
-    "Shoulder": ["Z Press", "Zercher Press", "Clean and Press", "Pike Push-Ups"],
-    "Chest": ["Floor Press (60 Degree)", "Floor Press (90 Degree)", "Crush Grip Press", "Deficit Push-Ups"]
+    "Shoulder": {
+        "Z Press": {"sets": 3, "reps": "8-12", "demo_link": "https://example.com/z_press"},
+        "Zercher Press": {"sets": 3, "reps": "8-12", "demo_link": "https://example.com/zercher_press"},
+        "Clean and Press": {"sets": 3, "reps": "8-12", "demo_link": "https://example.com/clean_and_press"},
+        "Pike Push-Ups": {"sets": 3, "reps": "8-12", "demo_link": "https://example.com/pike_push_ups"}
+    },
+    "Chest": {
+        "Floor Press (60 Degree)": {"sets": 3, "reps": "8-12", "demo_link": "https://example.com/floor_press_60"},
+        "Floor Press (90 Degree)": {"sets": 3, "reps": "8-12", "demo_link": "https://example.com/floor_press_90"},
+        "Crush Grip Press": {"sets": 3, "reps": "8-12", "demo_link": "https://example.com/crush_grip_press"},
+        "Deficit Push-Ups": {"sets": 3, "reps": "8-12", "demo_link": "https://example.com/deficit_push_ups"}
+    }
 }
 
 upper_pull = {
-    "Upper Back and Whole Chain": ["Unilateral Rows", "Snatch (Front)", "Dead Snatch", "Pull-Ups"],
-    "Traps and Whole Chain": ["Carryovers (Walk)", "Pullover", "High Pulls", "Snatch (Lateral/Rotational)"]
+    "Upper Back and Whole Chain": {
+        "Unilateral Rows": {"sets": 3, "reps": "8-12", "demo_link": "https://example.com/unilateral_rows"},
+        "Snatch (Front)": {"sets": 3, "reps": "8-12", "demo_link": "https://example.com/snatch_front"},
+        "Dead Snatch": {"sets": 3, "reps": "8-12", "demo_link": "https://example.com/dead_snatch"},
+        "Pull-Ups": {"sets": 3, "reps": "8-12", "demo_link": "https://example.com/pull_ups"}
+    },
+    "Traps and Whole Chain": {
+        "Carryovers (Walk)": {"sets": 3, "reps": "8-12", "demo_link": "https://example.com/carryovers_walk"},
+        "Pullover": {"sets": 3, "reps": "8-12", "demo_link": "https://example.com/pullover"},
+        "High Pulls": {"sets": 3, "reps": "8-12", "demo_link": "https://example.com/high_pulls"},
+        "Snatch (Lateral/Rotational)": {"sets": 3, "reps": "8-12", "demo_link": "https://example.com/snatch_lateral"}
+    }
 }
 
 lower_push = {
-    "Quads": ["Goblet Squat", "Lunges (One with Hold, One with Clean)", "Curtsy Lunges", "Zercher Squat"]
+    "Quads": {
+        "Goblet Squat": {"sets": 3, "reps": "8-12", "demo_link": "https://example.com/goblet_squat"},
+        "Lunges (One with Hold, One with Clean)": {"sets": 3, "reps": "8-12", "demo_link": "https://example.com/lunges"},
+        "Curtsy Lunges": {"sets": 3, "reps": "8-12", "demo_link": "https://example.com/curtsy_lunges"},
+        "Zercher Squat": {"sets": 3, "reps": "8-12", "demo_link": "https://example.com/zercher_squat"}
+    }
 }
 
 lower_pull = {
-    "Hamstrings": ["RDL (Single Leg)", "RDL (Both Legs)", "Swings"]
+    "Hamstrings": {
+        "RDL (Single Leg)": {"sets": 3, "reps": "8-12", "demo_link": "https://example.com/rdl_single_leg"},
+        "RDL (Both Legs)": {"sets": 3, "reps": "8-12", "demo_link": "https://example.com/rdl_both_legs"},
+        "Swings": {"sets": 3, "reps": "8-12", "demo_link": "https://example.com/swings"}
+    }
 }
 
 # Streamlit app
@@ -33,10 +62,10 @@ selected_categories = st.multiselect(
 
 # Function to pick exercises
 def pick_exercise(category):
-    return random.choice(category)
+    return random.choice(list(category.items()))
 
 def pick_two_exercises(category):
-    return random.sample(category, 2)
+    return random.sample(list(category.items()), 2)
 
 # Display selected workouts
 if len(selected_categories) == 2:
@@ -54,11 +83,10 @@ if len(selected_categories) == 2:
             workout.extend(pick_two_exercises(lower_pull["Hamstrings"]))
     
     st.subheader('Your Workout:')
-    for exercise in workout:
+    for exercise, details in workout:
         with st.expander(exercise):
-            st.write(f"Sets: 3")
-            st.write(f"Reps: 8-12")
-            st.write(f"[Demo Link](#)")  # Replace # with the actual link
-
+            st.write(f"Sets: {details['sets']}")
+            st.write(f"Reps: {details['reps']}")
+            st.link_button(label="Demo Link", url=details['demo_link'])
 else:
     st.write("Please select exactly two categories.")
