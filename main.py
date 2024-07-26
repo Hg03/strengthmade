@@ -1,96 +1,60 @@
-import random
 import streamlit as st
-import pandas as pd
+import random
 
-# Define the exercise lists
-
-shoulder = {
-    "kettlebell zercher and press": "https://youtube.com/shorts/rEmwZw2blqs?si=0_0Z1AcocynfUIDp",
-    "kettlebell clean and press": "https://youtu.be/ExLymPrIhBQ?si=Jo7Lf2WUViZiEmhs",
-    "kettlebell z press": "https://youtube.com/shorts/wto_8mVOHF8?si=M4jawG9Y9vyQgw7T",
-    "pike push ups": "https://youtube.com/shorts/0cT6ug3WVn4?si=Sn-ey_fbTvF9V7-R",
-    "kettlebell chops": "https://youtu.be/Psmkt_Tft5E?si=9gj8FZ-jFr9Vm_vs"
-}
-chest = {
-    "kettlebell Floor press (lower)": "https://youtube.com/shorts/NHDQoqK8sXE?si=DfarH_cequPkzEAy", 
-    "kettlebell crush grip press (both arms)": "https://youtu.be/A98BUB7jxU0?si=i4qAzDfWlrH7ktnQ", 
-    "push ups (classic + diamond)": "https://youtu.be/XtU2VQVuLYs?si=hMQ9D8rmVR0h7bGI", 
-    "kettlebell 90 degree floor press (upper)": "https://youtube.com/shorts/NHDQoqK8sXE?si=-Z40JVp1TFzgVVAH"
-} 
-
-back = {
-    "pull ups": "https://youtube.com/shorts/gy1dyxEdCqc?si=zOhnMfPxsTinwdka", 
-    "kettlebell rows": "https://youtube.com/shorts/xbtdGjYmrnM?si=8DnseOJ5Y3Cw8jm4", 
-    "kettlebell snatch": "https://youtube.com/shorts/GV8kKDSprfQ?si=MthB8OqKVg699Yht", 
-    "kettlebell rotational snatch": "https://youtu.be/KpDxyxOCjCE?si=zGwRiX-xD-ZoTWp-", 
-    "kettlebell pullover": "https://youtube.com/shorts/5dfA3OP4wx0?si=9byWzT8Qni-F-Sif"
+# Define the exercise categories and their corresponding exercises
+upper_push = {
+    "Shoulder": ["Z Press", "Zercher Press", "Clean and Press", "Pike Push-Ups"],
+    "Chest": ["Floor Press (60 Degree)", "Floor Press (90 Degree)", "Crush Grip Press", "Deficit Push-Ups"]
 }
 
-abs = {
-    "Kettlebell l crunch": "https://www.youtube.com/watch?v=__T3XxQB2Ng&t=302s",
-    "Kettlebell turkish sit up": "https://www.youtube.com/watch?v=__T3XxQB2Ng&t=228s",
-    "kettlebell pike lift over": "https://www.youtube.com/watch?v=__T3XxQB2Ng&t=290s"
-}
-legs = {
-    "double kettlebell (one clean and one hanged) lunges": "https://youtube.com/shorts/V490qKi_Z8A?si=oKpxqarcD9vrfN-P", 
-    "kang squat": "https://youtube.com/shorts/yF0zupwzg8E?si=qySTT1Ymfh7Mqyvi", 
-    "kettlebell curtsy squat": "https://youtube.com/shorts/DpsNSe3VPYI?si=5iIznJ1_M3vZG7Bw", 
-    "Romanian deadlift": "https://youtu.be/keiZFdUgvKQ?si=LyshBeXbCS9MoVSn", 
-    "zercher squat": "https://youtube.com/shorts/xOwTaQdN2YY?si=1waZFb1k6SoF38Uy"
-}
-full = {
-    "kettlebell Overhead squat": "https://youtu.be/tpPKyhvf0IA?si=goat5wiTpUmq1TLE", 
-    "thrusters": "https://youtube.com/shorts/Id0Qefh4AHc?si=xj6yu7Ud1xUsVlYj", 
-    "kettlebell swing": "https://youtu.be/ae6nV6pFRG4?si=fpSZaDpJ8KpGaemZ", 
-    "burpees": "https://youtu.be/G2hv_NYhM-A?si=PRLHbiTdIdpgWuc5", 
-    "carry with lunges": "https://youtube.com/shorts/xQA8fZn1hzk?si=IjI6KWXad3KSdt3R"
+upper_pull = {
+    "Upper Back and Whole Chain": ["Unilateral Rows", "Snatch (Front)", "Dead Snatch", "Pull-Ups"],
+    "Traps and Whole Chain": ["Carryovers (Walk)", "Pullover", "High Pulls", "Snatch (Lateral/Rotational)"]
 }
 
-exercises = {"Chest":chest, "Shoulder":shoulder, "Back":back, "Abs":abs, "Legs":legs, "Full Body":full}
+lower_push = {
+    "Quads": ["Goblet Squat", "Lunges (One with Hold, One with Clean)", "Curtsy Lunges", "Zercher Squat"]
+}
 
-def fetch_with_links(workout_list):
-    final_list = {}
-    for workout in workout_list:
-        final_list[workout] = ""
-        for exercises_ in exercises.values():
-            for exercise in exercises_.keys():
-                if exercise == workout:
-                    final_list[workout] = exercises_[exercise]
-    return final_list
-    
-# Function to pick exercise
-def get_two_random_strings(string_list):
-    number_ex = '0'
-    if len(string_list) < 1:
-        st.primary("Include atleast one muscle group")
-    elif len(string_list) == 1:
-        number_ex = '4'
-    elif len(string_list) == 2:
-        number_ex = '2'
-    return random.sample(string_list, int(number_ex))
+lower_pull = {
+    "Hamstrings": ["RDL (Single Leg)", "RDL (Both Legs)", "Swings"]
+}
 
-# Function to generate a workout
-def generate_workout(splits):
+# Streamlit app
+st.title('Custom Kettlebell Workout Generator')
+
+# Selection box for workout categories
+selected_categories = st.multiselect(
+    'Select two workout categories:', 
+    ['Upper Body Push', 'Upper Body Pull', 'Lower Body Push', 'Lower Body Pull'],
+    default=['Upper Body Push', 'Lower Body Push'],
+    max_selections=2
+)
+
+# Function to pick exercises
+def pick_exercise(category):
+    return random.choice(category)
+
+def pick_two_exercises(category):
+    return random.sample(category, 2)
+
+# Display selected workouts
+if len(selected_categories) == 2:
     workout = []
-    demos = []
-    workout_2d = [get_two_random_strings(list(exercises[split].keys())) for split in splits]
-    flatten = lambda target: sum((flatten(sub) if isinstance(sub, list) else [sub] for sub in target), [])
-    workout_names = flatten(workout_2d)
-    final_list = fetch_with_links(workout_names)
-    return final_list
-
-
-df = pd.DataFrame({"Day":["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], "Split": ["Chest & Shoulders", "Back & Abs", "Legs", "Chest & Shoulders", "Back & Abs", "Legs", "Full Body"]})
-# Streamlit app layout
-st.title("Kettlebell Workout Generator")
-st.sidebar.title("My current split")
-st.sidebar.dataframe(df)
-st.image('kb.jpg', caption='You Are Savage💪')
-splits = st.multiselect("What do you wanna perform ?", ["Chest", "Shoulder", "Back", "Abs", "Legs", "Full Body"])
-if st.button("Generate Your Savage Workout"):
-    workouts = generate_workout(splits)
-    st.info("Your Kettlebell Workout:")
-    for workout in workouts.items():
-        with st.expander(f"{workout[0]}"):
-            st.write("3 sets 8-10 reps")
-            st.link_button("Learn how to do it", workout[1])
+    for category in selected_categories:
+        if category == 'Upper Body Push':
+            workout.append(pick_exercise(upper_push["Shoulder"]))
+            workout.append(pick_exercise(upper_push["Chest"]))
+        elif category == 'Upper Body Pull':
+            workout.append(pick_exercise(upper_pull["Upper Back and Whole Chain"]))
+            workout.append(pick_exercise(upper_pull["Traps and Whole Chain"]))
+        elif category == 'Lower Body Push':
+            workout.extend(pick_two_exercises(lower_push["Quads"]))
+        elif category == 'Lower Body Pull':
+            workout.extend(pick_two_exercises(lower_pull["Hamstrings"]))
+    
+    st.subheader('Your Workout:')
+    for exercise in workout:
+        st.write(f"- {exercise}")
+else:
+    st.write("Please select exactly two categories.")
