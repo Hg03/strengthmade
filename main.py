@@ -1,6 +1,8 @@
 import streamlit as st
 import random
 
+st.set_page_config(page_title='strenghtmade', page_icon='🛎️')
+
 # Define the exercise categories and their corresponding exercises with details
 upper_push = {
     "Shoulder": {
@@ -50,7 +52,7 @@ lower_pull = {
 }
 
 # Streamlit app
-st.title('Custom Kettlebell Workout Generator')
+st.title('Kettlebell Workout Recommender')
 
 # Selection box for workout categories
 selected_categories = st.multiselect(
