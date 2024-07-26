@@ -55,6 +55,10 @@ if len(selected_categories) == 2:
     
     st.subheader('Your Workout:')
     for exercise in workout:
-        st.write(f"- {exercise}")
+        with st.expander(exercise):
+            st.write(f"Sets: 3")
+            st.write(f"Reps: 8-12")
+            st.write(f"[Demo Link](#)")  # Replace # with the actual link
+
 else:
     st.write("Please select exactly two categories.")
