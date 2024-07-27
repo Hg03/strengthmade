@@ -3,6 +3,25 @@ import random
 
 st.set_page_config(page_title='strenghtmade', page_icon='🛎️')
 
+# Define the list of motivational thoughts
+motivational_thoughts = {
+    "Transform Your Body, One Swing at a Time": "Kettlebells are not just weights; they're tools for transformation. Every rep brings you closer to a stronger, fitter you.",
+    "Embrace the Challenge, Reap the Reward": "The unique movements in kettlebell training push you out of your comfort zone, building resilience and strength.",
+    "The Bell That Rings with Progress": "With each swing, press, and lift, kettlebells ring with the sound of your hard work and dedication.",
+    "Strength Lies in Mastering the Basics": "Kettlebell training teaches you that mastery comes from perfecting the fundamentals, building a solid foundation.",
+    "From Weakness to Strength, One Lift at a Time": "Kettlebells are the perfect tool for turning weaknesses into strengths, both physically and mentally.",
+    "Unleash Your Inner Warrior": "Training with kettlebells is like training for battle—prepare your body and mind for whatever life throws at you.",
+    "The Power of Consistency": "Just like any other skill, consistency in kettlebell training is key. Keep lifting, and watch your progress skyrocket.",
+    "Sweat, Strength, Success": "The more you sweat in your kettlebell workouts, the stronger you become, leading you to success in all areas of life.",
+    "A Journey of a Thousand Swings": "Every kettlebell session is a step on your fitness journey. Embrace the process and enjoy the ride.",
+    "The Iron Bell, Your Silent Mentor": "The kettlebell may be silent, but it teaches invaluable lessons in discipline, perseverance, and growth."
+}
+
+# Pick a random motivational thought
+random_title = random.choice(list(motivational_thoughts.keys()))
+random_thought = motivational_thoughts[random_title]
+
+
 # Define the exercise categories and their corresponding exercises with details
 upper_push = {
     "Shoulder": {
@@ -53,6 +72,11 @@ lower_pull = {
 
 # Streamlit app
 st.title('Kettlebell Workout Recommender')
+
+# Display the random thought in an expander
+with st.expander(random_title):
+    st.write(random_thought)
+
 
 # Selection box for workout categories
 selected_categories = st.multiselect(
