@@ -67,6 +67,7 @@ def generate_workout_split(exercises):
 
 # Generate the workout split when button is clicked
 if st.button('Generate Workout Plan'):
+    st.info('Is today, Friday evening, saturday or sunday or you messed up your schedule', icon="ℹ️")
     workout_split = generate_workout_split(exercises)
     
     # Create markdown formatted workout plan
