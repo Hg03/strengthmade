@@ -1,5 +1,5 @@
 [theme]
 base="dark"
-primaryColor="#8B4513"
-backgroundColor="2F4F4F"
-secondaryBackgroundColor="#1A1A1A"
+primaryColor="#F63366"  # A vibrant pink-red, for contrast and emphasis
+backgroundColor="#262730"  # A dark blue-gray, similar to Streamlit's default dark mode
+secondaryBackgroundColor="#0E1117"  # A very dark blue-gray, almost black
