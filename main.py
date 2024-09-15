@@ -3,7 +3,7 @@ import random
 
 # Set page title and icon
 st.set_page_config(page_title='StrengthMade', page_icon='🛎️', layout="wide")
-st.image('coffeexbell.png')
+
 
 # Define the list of motivational thoughts
 motivational_thoughts = {
@@ -18,6 +18,7 @@ random_thought = motivational_thoughts[random_title]
 
 # Streamlit app title and motivational message
 st.title('Kettlebell Workout Recommender')
+st.image('coffeexbell.png')
 st.subheader(random_title)
 st.write(random_thought)
 
