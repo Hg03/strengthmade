@@ -78,7 +78,7 @@ if st.button('Generate Workout Plan'):
         workout_markdown += "\n"
     
     # Display the markdown in Streamlit
-    st.markdown(workout_markdown)
+    # st.markdown(workout_markdown)
     
     # Add copy button with markdown formatted workout plan
     st.code(workout_markdown)
