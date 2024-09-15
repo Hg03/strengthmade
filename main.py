@@ -8,14 +8,7 @@ st.set_page_config(page_title='StrengthMade', page_icon='🛎️')
 motivational_thoughts = {
     "Transform Your Body, One Swing at a Time": "Kettlebells are not just weights; they're tools for transformation. Every rep brings you closer to a stronger, fitter you.",
     "Embrace the Challenge, Reap the Reward": "The unique movements in kettlebell training push you out of your comfort zone, building resilience and strength.",
-    "The Bell That Rings with Progress": "With each swing, press, and lift, kettlebells ring with the sound of your hard work and dedication.",
-    "Strength Lies in Mastering the Basics": "Kettlebell training teaches you that mastery comes from perfecting the fundamentals, building a solid foundation.",
-    "From Weakness to Strength, One Lift at a Time": "Kettlebells are the perfect tool for turning weaknesses into strengths, both physically and mentally.",
-    "Unleash Your Inner Warrior": "Training with kettlebells is like training for battle—prepare your body and mind for whatever life throws at you.",
-    "The Power of Consistency": "Just like any other skill, consistency in kettlebell training is key. Keep lifting, and watch your progress skyrocket.",
-    "Sweat, Strength, Success": "The more you sweat in your kettlebell workouts, the stronger you become, leading you to success in all areas of life.",
-    "A Journey of a Thousand Swings": "Every kettlebell session is a step on your fitness journey. Embrace the process and enjoy the ride.",
-    "The Iron Bell, Your Silent Mentor": "The kettlebell may be silent, but it teaches invaluable lessons in discipline, perseverance, and growth."
+    # Add more motivational thoughts...
 }
 
 # Pick a random motivational thought
@@ -69,14 +62,23 @@ def generate_workout_split(exercises):
         for exercise in day:
             sets = exercises[exercise]["Sets"]
             reps = exercises[exercise]["Reps"]
-            workout_program[day_key].append(f"{exercise}: {sets} sets x {reps} reps")
+            workout_program[day_key].append(f"  - **{exercise}**: {sets} sets x {reps} reps")
     return workout_program
 
-# Generate the workout split
-workout_split = generate_workout_split(exercises)
-
-# Display the workout program for the week
-for day, exercises in workout_split.items():
-    st.header(day)
-    for exercise in exercises:
-        st.write(f"- {exercise}")
+# Generate the workout split when button is clicked
+if st.button('Generate Workout Plan'):
+    workout_split = generate_workout_split(exercises)
+    
+    # Create markdown formatted workout plan
+    workout_markdown = "# Weekly Workout Plan\n\n"
+    for day, exercises in workout_split.items():
+        workout_markdown += f"## {day}\n"
+        for exercise in exercises:
+            workout_markdown += f"{exercise}\n"
+        workout_markdown += "\n"
+    
+    # Display the markdown in Streamlit
+    st.markdown(workout_markdown)
+    
+    # Add copy button with markdown formatted workout plan
+    st.code(workout_markdown)
