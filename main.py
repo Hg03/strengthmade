@@ -2,7 +2,8 @@ import streamlit as st
 import random
 
 # Set page title and icon
-st.set_page_config(page_title='StrengthMade', page_icon='🛎️')
+st.set_page_config(page_title='StrengthMade', page_icon='🛎️', layout="wide")
+st.image('coffeexbell.png')
 
 # Define the list of motivational thoughts
 motivational_thoughts = {
