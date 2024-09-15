@@ -1,7 +1,8 @@
 import streamlit as st
 import random
 
-st.set_page_config(page_title='strenghtmade', page_icon='🛎️')
+# Set page title and icon
+st.set_page_config(page_title='StrengthMade', page_icon='🛎️')
 
 # Define the list of motivational thoughts
 motivational_thoughts = {
@@ -21,98 +22,61 @@ motivational_thoughts = {
 random_title = random.choice(list(motivational_thoughts.keys()))
 random_thought = motivational_thoughts[random_title]
 
-
-# Define the exercise categories and their corresponding exercises with details
-upper_push = {
-    "Shoulder": {
-        "Z Press": {"sets": 3, "reps": "8-12", "demo_link": "https://example.com/z_press"},
-        "Zercher Press": {"sets": 3, "reps": "8-12", "demo_link": "https://example.com/zercher_press"},
-        "Clean and Press": {"sets": 3, "reps": "8-12", "demo_link": "https://example.com/clean_and_press"},
-        "Pike Push-Ups": {"sets": 3, "reps": "8-12", "demo_link": "https://example.com/pike_push_ups"}
-    },
-    "Chest": {
-        "Floor Press (60 Degree)": {"sets": 3, "reps": "8-12", "demo_link": "https://example.com/floor_press_60"},
-        "Floor Press (90 Degree)": {"sets": 3, "reps": "8-12", "demo_link": "https://example.com/floor_press_90"},
-        "Crush Grip Press": {"sets": 3, "reps": "8-12", "demo_link": "https://example.com/crush_grip_press"},
-        "Deficit Push-Ups": {"sets": 3, "reps": "8-12", "demo_link": "https://example.com/deficit_push_ups"}
-    }
-}
-
-upper_pull = {
-    "Upper Back and Whole Chain": {
-        "Unilateral Rows": {"sets": 3, "reps": "8-12", "demo_link": "https://example.com/unilateral_rows"},
-        "Snatch (Front)": {"sets": 3, "reps": "8-12", "demo_link": "https://example.com/snatch_front"},
-        "Dead Snatch": {"sets": 3, "reps": "8-12", "demo_link": "https://example.com/dead_snatch"},
-        "Pull-Ups": {"sets": 3, "reps": "8-12", "demo_link": "https://example.com/pull_ups"}
-    },
-    "Traps and Whole Chain": {
-        "Carryovers (Walk)": {"sets": 3, "reps": "8-12", "demo_link": "https://example.com/carryovers_walk"},
-        "Pullover": {"sets": 3, "reps": "8-12", "demo_link": "https://example.com/pullover"},
-        "High Pulls": {"sets": 3, "reps": "8-12", "demo_link": "https://example.com/high_pulls"},
-        "Snatch (Lateral/Rotational)": {"sets": 3, "reps": "8-12", "demo_link": "https://example.com/snatch_lateral"}
-    }
-}
-
-lower_push = {
-    "Quads": {
-        "Goblet Squat": {"sets": 3, "reps": "8-12", "demo_link": "https://example.com/goblet_squat"},
-        "Lunges (One with Hold, One with Clean)": {"sets": 3, "reps": "8-12", "demo_link": "https://example.com/lunges"},
-        "Curtsy Lunges": {"sets": 3, "reps": "8-12", "demo_link": "https://example.com/curtsy_lunges"},
-        "Zercher Squat": {"sets": 3, "reps": "8-12", "demo_link": "https://example.com/zercher_squat"}
-    }
-}
-
-lower_pull = {
-    "Hamstrings": {
-        "RDL (Single Leg)": {"sets": 3, "reps": "8-12", "demo_link": "https://example.com/rdl_single_leg"},
-        "RDL (Both Legs)": {"sets": 3, "reps": "8-12", "demo_link": "https://example.com/rdl_both_legs"},
-        "Swings": {"sets": 3, "reps": "8-12", "demo_link": "https://example.com/swings"}
-    }
-}
-
-# Streamlit app
+# Streamlit app title and motivational message
 st.title('Kettlebell Workout Recommender')
+st.subheader(random_title)
+st.write(random_thought)
 
-# Display the random thought in an expander
-with st.expander(random_title):
-    st.write(random_thought)
+# List of exercises
+exercises = {
+    "Push Ups": {"Sets": "4", "Reps": "8-10"},
+    "Pull Ups": {"Sets": "4", "Reps": "8-10"},
+    "Handstand Push Ups": {"Sets": "4", "Reps": "8"},
+    "Kettlebell Chest Press": {"Sets": "4", "Reps": "8-10"},
+    "Kettlebell Shoulder Press": {"Sets": "4", "Reps": "6-8"},
+    "Kettlebell Rows": {"Sets": "4", "Reps": "8-10"},
+    "Kettlebell Swings": {"Sets": "4", "Reps": "8-10"},
+    "Kettlebell Snatch": {"Sets": "4", "Reps": "4-5"},
+    "Kettlebell Goblet Squats": {"Sets": "4", "Reps": "8-10"},
+    "Kettlebell Romanian Deadlift": {"Sets": "4", "Reps": "6-8"},
+    "Kettlebell Clean Squats": {"Sets": "4", "Reps": "8-10"},
+    "Kettlebell Clean Lunges": {"Sets": "4", "Reps": "8-10"},
+    "Kettlebell Curls": {"Sets": "4", "Reps": "8-10"},
+    "Kettlebell Tricep Extension": {"Sets": "4", "Reps": "8-10"}
+}
 
-
-# Selection box for workout categories
-selected_categories = st.multiselect(
-    'Select two workout categories:', 
-    ['Upper Body Push', 'Upper Body Pull', 'Lower Body Push', 'Lower Body Pull'],
-    default=['Upper Body Push', 'Lower Body Push'],
-    max_selections=2
-)
-
-# Function to pick exercises
-def pick_exercise(category):
-    return random.choice(list(category.items()))
-
-def pick_two_exercises(category):
-    return random.sample(list(category.items()), 2)
-
-# Display selected workouts
-if len(selected_categories) == 2:
-    workout = []
-    for category in selected_categories:
-        if category == 'Upper Body Push':
-            workout.append(pick_exercise(upper_push["Shoulder"]))
-            workout.append(pick_exercise(upper_push["Chest"]))
-        elif category == 'Upper Body Pull':
-            workout.append(pick_exercise(upper_pull["Upper Back and Whole Chain"]))
-            workout.append(pick_exercise(upper_pull["Traps and Whole Chain"]))
-        elif category == 'Lower Body Push':
-            workout.extend(pick_two_exercises(lower_push["Quads"]))
-        elif category == 'Lower Body Pull':
-            workout.extend(pick_two_exercises(lower_pull["Hamstrings"]))
+# Function to generate a 5-day workout split
+def generate_workout_split(exercises):
+    all_exercises = list(exercises.keys())
     
-    st.subheader('Your Workout:')
-    for exercise, details in workout:
-        with st.expander(exercise):
-            st.write(f"Sets: {details['sets']}")
-            st.write(f"Reps: {details['reps']}")
-            st.link_button(label="Demo Link", url=details['demo_link'])
-else:
-    st.write("Please select exactly two categories.")
+    # Randomly select 10 exercises for the week
+    selected_exercises = random.sample(all_exercises, 10)
+    
+    # Ensure each selected exercise appears twice
+    exercises_pool = selected_exercises * 2
+    
+    # Shuffle the exercises pool
+    random.shuffle(exercises_pool)
+    
+    # Split exercises into 5 days (4 exercises per day)
+    split = [exercises_pool[i:i+4] for i in range(0, len(exercises_pool), 4)]
+    
+    # Output the workout program for 5 days
+    workout_program = {}
+    for i, day in enumerate(split[:5]):  # Take only the first 5 days
+        day_key = f"Day {i + 1}"
+        workout_program[day_key] = []
+        for exercise in day:
+            sets = exercises[exercise]["Sets"]
+            reps = exercises[exercise]["Reps"]
+            workout_program[day_key].append(f"{exercise}: {sets} sets x {reps} reps")
+    return workout_program
+
+# Generate the workout split
+workout_split = generate_workout_split(exercises)
+
+# Display the workout program for the week
+for day, exercises in workout_split.items():
+    st.header(day)
+    for exercise in exercises:
+        st.write(f"- {exercise}")
