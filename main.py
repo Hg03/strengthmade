@@ -7,7 +7,7 @@ def put_card(workout):
     today = today_date.strftime("%B %d, %Y")
     st.write(f"Date: {today}")
     for work in workout:
-        st.write(f"Exercise => {work['excercise']} : :green[{work['sets']}] x :blue[{work['reps']}] ")
+        st.write(f"Exercise => {work['exercise']} : :green[{work['sets']}] x :blue[{work['reps']}] ")
         
 # Set page title and icon
 st.set_page_config(page_title='StrengthMade', page_icon='🛎️', layout="wide")
