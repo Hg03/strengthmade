@@ -31,3 +31,4 @@ st.subheader(random_title)
 st.write(random_thought)
 
 put_card(category = "Full Body", workout = [{"exercise": "Row to rotational clean to rotational press", "sets": 5, "reps": 6}, {"exercise": "Inchworm push ups to deadlift", "sets": 5, "reps": 10}, {"exercise": "Clean to Goblet Squats", "sets": 5, "reps": 5}])
+put_card(category = "Full Body", workout = [{"exercise": "Row to rotational clean to rotational press", "sets": 5, "reps": 6}, {"exercise": "Inchworm push ups to deadlift", "sets": 5, "reps": 10}, {"exercise": "Clean to Goblet Squats", "sets": 5, "reps": 5}])
