@@ -1,6 +1,13 @@
 import streamlit as st
+from datetime import date
 import random
 
+def put_card(workout):
+    today_date = date.today()
+    today = today_date.strftime("%B %d, %Y")
+    st.write(f"Date: {today}")
+    for work in workout:
+        st.write(f"Exercise => {work['excercise']} : :green[{work['sets']}] x :blue[{work['reps']}] ")
 # Set page title and icon
 st.set_page_config(page_title='StrengthMade', page_icon='🛎️', layout="wide")
 
@@ -21,3 +28,5 @@ st.title('Kettlebell Workouts')
 st.image('coffeexbell.png')
 st.subheader(random_title)
 st.write(random_thought)
+
+put_card([{"exercise": "Row to rotational clean to rotational press", "sets": 5, "reps": 6}, {"exercise": "Inchworm push ups to deadlift", "sets": 5, "reps": 10}, {"exercise": "Clean to Goblet Squats", "sets": 5, "reps": 5}])
