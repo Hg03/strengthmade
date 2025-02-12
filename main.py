@@ -5,7 +5,7 @@ import random
 def put_card(category, workout):
     today_date = date.today()
     today = today_date.strftime("%B %d, %Y")
-    with st.expander(f"Date: {today}, {{category}"):
+    with st.expander(f"Date: {today}, {category}"):
         for work in workout:
             st.write(f" :yellow[Exercise] : {work['exercise']} : :green[{work['sets']}] x :blue[{work['reps']}] ")
         
